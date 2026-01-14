@@ -781,7 +781,9 @@
     isPropertyId: function(propertyName, $itemDesc) {
       var isId = null;
       var propertyFound = false;
-      $itemDesc.find("property[name=" + propertyName + "]").each(function() {
+      $itemDesc.find("property").filter(function () {
+          return $(this).attr("name") === propertyName;
+      }).each(function() {
         propertyFound = true;
         var $property = $(this);
         if ($property.attr("item-type") !== undefined && $property.attr("repository") === undefined)
